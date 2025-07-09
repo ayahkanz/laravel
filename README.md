@@ -67,3 +67,24 @@ config/
 ## Kontribusi
 
 Kontribusi dalam bentuk apapun sangat kami hargai. Silakan buat *pull request* atau *issue* di repositori ini.
+
+## Deployment Otomatis (Continuous Deployment)
+
+Proyek ini dapat diatur untuk deployment otomatis ke server produksi (misalnya, VPS dengan aaPanel) menggunakan GitHub Webhooks.
+
+### Cara Kerja
+
+1.  **GitHub Webhooks**: Setiap kali ada `git push` ke repositori ini, GitHub akan mengirimkan sinyal (webhook) ke server Anda.
+2.  **aaPanel Git Deployment**: aaPanel memiliki fitur bawaan yang akan mendengarkan webhook ini dan menjalankan skrip deployment yang telah dikonfigurasi.
+
+### Langkah-langkah Konfigurasi (Ringkasan)
+
+1.  **Di aaPanel**:
+    *   Tambahkan repositori ini di fitur Git Deployment.
+    *   Konfigurasi SSH Key: Tambahkan *public key* SSH dari aaPanel ke *Deploy Keys* di pengaturan repositori GitHub Anda.
+    *   Atur Skrip Deployment: Tentukan perintah yang akan dijalankan saat ada pembaruan (misalnya, `git pull`, `composer install`, `php artisan migrate`, `npm install`, `npm run build`).
+2.  **Di GitHub**:
+    *   Salin Webhook URL dari aaPanel.
+    *   Di pengaturan repositori GitHub Anda (`Settings` -> `Webhooks`), tambahkan Webhook URL tersebut dan pilih `Just the push event`.
+
+Dengan konfigurasi ini, setiap `git push` ke cabang utama akan secara otomatis memperbarui kode di server produksi Anda.
