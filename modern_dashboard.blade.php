@@ -9,47 +9,50 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/magnews2/css/main.css') }}">
     <style>
         :root {
-            /* Color Palette - Abu-abu, Biru Soft, Kuning */
-            --primary-gray: #E8EEF2;
-            --secondary-gray: #C5D3E0;
-            --accent-blue: #5B9BD5;
-            --accent-yellow: #FFD966;
-            --text-dark: #2C3E50;
-            --shadow-color: rgba(91, 155, 213, 0.15);
+            /* Industrial Color Palette - Grey Primary, Blue & Yellow Secondary */
+            --primary-grey: #2C2C2C;
+            --secondary-grey: #404040;
+            --light-grey: #6B6B6B;
+            --accent-blue: #1E40AF;
+            --accent-yellow: #F59E0B;
+            --text-light: #F3F4F6;
+            --text-dark: #111827;
+            --shadow-color: rgba(0, 0, 0, 0.4);
             --white: #FFFFFF;
+            --metal-grey: #4A4A4A;
         }
 
-        /* Card Menu - Prisma Effect */
+        /* Card Menu - Industrial Effect */
         .card-menu {
             min-height: 320px !important;
-            background: linear-gradient(145deg, #F5F7FA 0%, #E8EEF2 100%);
-            border: 3px solid var(--secondary-gray) !important;
-            border-radius: 24px !important;
+            background: linear-gradient(145deg, var(--secondary-grey) 0%, var(--primary-grey) 100%);
+            border: 4px solid var(--metal-grey) !important;
+            border-radius: 8px !important;
             box-shadow: 
-                0 8px 16px rgba(91, 155, 213, 0.1),
-                0 4px 8px rgba(0, 0, 0, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                0 12px 24px rgba(0, 0, 0, 0.3),
+                0 6px 12px rgba(0, 0, 0, 0.2),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1) !important;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             transform-style: preserve-3d;
         }
 
-        /* Shine Effect pada Card */
+        /* Industrial Metal Effect pada Card */
         .card-menu::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
-            width: 50%;
+            width: 100%;
             height: 100%;
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255, 217, 102, 0.15),
+                rgba(245, 158, 11, 0.2),
                 transparent
             );
-            transition: left 0.6s ease;
+            transition: left 0.4s ease;
             z-index: 1;
         }
 
@@ -58,29 +61,31 @@
         }
 
         .card-menu:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-4px);
             box-shadow: 
-                0 16px 32px rgba(91, 155, 213, 0.2),
-                0 8px 16px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-            border-color: var(--accent-blue) !important;
+                0 16px 32px rgba(0, 0, 0, 0.4),
+                0 8px 16px rgba(0, 0, 0, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.15) !important;
+            border-color: var(--accent-yellow) !important;
         }
 
-        /* Button Styling */
+        /* Industrial Button Styling */
         .btn-uii {
-            background: linear-gradient(135deg, #5B9BD5, #7BA9D9);
-            border: none;
-            color: white;
+            background: linear-gradient(135deg, var(--accent-blue), var(--metal-grey));
+            border: 2px solid var(--accent-blue);
+            color: var(--text-light);
             padding: 12px 24px;
-            border-radius: 20px !important;
+            border-radius: 4px !important;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
             box-shadow: 
-                0 4px 12px rgba(91, 155, 213, 0.25),
-                0 2px 4px rgba(0, 0, 0, 0.1);
-            font-weight: 600;
-            letter-spacing: 0.3px;
+                0 4px 8px rgba(0, 0, 0, 0.3),
+                0 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 13px;
         }
 
         .btn-uii::before {
@@ -93,18 +98,19 @@
             background: linear-gradient(
                 90deg, 
                 transparent, 
-                rgba(255, 217, 102, 0.3), 
+                rgba(245, 158, 11, 0.4), 
                 transparent
             );
-            transition: all 0.5s ease;
+            transition: all 0.4s ease;
         }
 
         .btn-uii:hover {
-            background: linear-gradient(135deg, #7BA9D9, #FFD966);
+            background: linear-gradient(135deg, var(--accent-yellow), var(--accent-blue));
             color: var(--text-dark);
+            border-color: var(--accent-yellow);
             box-shadow: 
-                0 6px 16px rgba(91, 155, 213, 0.35),
-                0 3px 6px rgba(255, 217, 102, 0.2);
+                0 6px 12px rgba(0, 0, 0, 0.4),
+                0 3px 6px rgba(245, 158, 11, 0.3);
             transform: translateY(-2px);
         }
 
@@ -141,53 +147,57 @@
             transform: scale(1.05);
         }
 
-        /* Text Color Class */
+        /* Industrial Text Color Class */
         .color-blue-uii {
-            background: linear-gradient(45deg, #5B9BD5, #7BA9D9);
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-yellow));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 700;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        /* List Items */
+        /* Industrial List Items */
         .fa-ul li {
             margin-bottom: 8px;
             transition: all 0.3s ease;
-            color: var(--text-dark);
+            color: var(--text-light);
+            font-weight: 500;
         }
 
         .fa-ul li:hover {
             transform: translateX(8px);
-            color: var(--accent-blue);
+            color: var(--accent-yellow);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .fa-ul .color-blue-uii {
-            background: linear-gradient(45deg, #5B9BD5, #FFD966);
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-yellow));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Collapse Card */
+        /* Industrial Collapse Card */
         .collapse .card {
-            border: none;
-            background: linear-gradient(145deg, #FAFBFC 0%, #F0F4F8 100%);
-            border-radius: 16px;
+            border: 2px solid var(--metal-grey);
+            background: linear-gradient(145deg, var(--light-grey) 0%, var(--secondary-grey) 100%);
+            border-radius: 4px;
             box-shadow: 
-                0 2px 8px rgba(91, 155, 213, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+                0 4px 8px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        /* HR Divider */
+        /* Industrial HR Divider */
         hr {
             background: linear-gradient(
                 90deg, 
                 transparent, 
-                rgba(91, 155, 213, 0.3), 
+                var(--accent-yellow), 
                 transparent
             );
-            height: 2px;
+            height: 3px;
             border: none;
-            opacity: 1;
+            opacity: 0.8;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         /* Image Wrapper for Consistent Sizing */
@@ -207,20 +217,25 @@
             object-fit: contain;
         }
 
-        /* Card Text Styling */
+        /* Industrial Card Text Styling */
         .card-text {
-            font-size: 20px; 
-            font-weight: 600; 
+            font-size: 22px; 
+            font-weight: 800; 
             background: linear-gradient(45deg, var(--accent-blue), var(--accent-yellow)); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* User Type Text */
+        /* Industrial User Type Text */
         .user-type-text {
             font-size: 16px; 
-            letter-spacing: 0.5px;
-            color: var(--text-dark);
+            letter-spacing: 0.8px;
+            color: var(--text-light);
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         /* Additional Smooth Animations */
@@ -237,15 +252,26 @@
             gap: 8px;
         }
 
-        /* Responsive Adjustments */
+        /* Industrial Background */
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        /* Industrial Responsive Adjustments */
         @media (max-width: 768px) {
             .card-menu {
                 min-height: 280px !important;
+                border-radius: 6px !important;
             }
             
             .btn-uii {
                 padding: 10px 20px;
-                font-size: 14px;
+                font-size: 12px;
+                letter-spacing: 0.5px;
+            }
+            
+            .card-text {
+                font-size: 18px;
             }
         }
     </style>
